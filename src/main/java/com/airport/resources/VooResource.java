@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.airport.domain.Voo;
+import com.airport.domain.dtos.ClassAirportDTO;
 import com.airport.domain.dtos.VooDTO;
 import com.airport.services.VooService;
 
@@ -42,8 +43,8 @@ public class VooResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<?> create(@Valid @RequestBody VooDTO objDTO) {
-	    Voo newObj = service.create(objDTO);
+	public ResponseEntity<?> create(@Valid @RequestBody VooDTO objDTO, ClassAirportDTO classDTO) {
+	    Voo newObj = service.create(objDTO, classDTO);
 	    if (newObj.getAeroportoIda().equals(newObj.getAeroportoVolta())) {
 	        return ResponseEntity.badRequest().body("Error: Origem e chegada não podem ter o mesmo destino");
 	    }

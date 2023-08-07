@@ -8,8 +8,9 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.airport.domain.Aeroporto;
+
 import com.airport.domain.Voo;
+import com.airport.domain.dtos.ClassAirportDTO;
 import com.airport.domain.dtos.VooDTO;
 import com.airport.repository.VooRepository;
 import com.airport.services.exceptions.ObjectNotFoundException;
@@ -20,6 +21,10 @@ public class VooService {
 	@Autowired
 	VooRepository repository;
 	
+	@Autowired
+	ClassAirportService airportService;
+
+	
 	public Voo findById(Integer id) {
 		Optional<Voo> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não Encontrado! ID: " + id));
@@ -29,10 +34,12 @@ public class VooService {
 		return repository.findAll();
 	}
 	
-	public Voo create(VooDTO objDTO) {
+	public Voo create(VooDTO objDTO, ClassAirportDTO classDTO) {
 		objDTO.setId(null);
 		Voo newObj = new Voo(objDTO);
-		return repository.save(newObj);
+		repository.save(newObj);
+		airportService.createClassAirport(classDTO, newObj);
+		return newObj;
 	}
 
 	public Voo update(Integer id, @Valid VooDTO objDTO) {
@@ -41,6 +48,5 @@ public class VooService {
 		oldObj = new Voo(objDTO);
 		return repository.save(oldObj);
 	}
-
 	
 }
