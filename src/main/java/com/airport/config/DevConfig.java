@@ -5,12 +5,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.airport.services.DBService;
 
 @Configuration
 @Profile("dev")
-public class DevConfig {
+@EnableWebMvc
+public class DevConfig  implements WebMvcConfigurer{
 
 	@Autowired
 	private DBService dbService;
@@ -24,5 +28,11 @@ public class DevConfig {
 			this.dbService.instanciaDB();
 		}
 		return false;		
+	}
+	
+	public void addCorsMappings(CorsRegistry registry) {
+		
+		registry.addMapping("/**");
+		
 	}
 }
