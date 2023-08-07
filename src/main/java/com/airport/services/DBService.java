@@ -57,17 +57,22 @@ public class DBService {
 		Ticket c5 = new Ticket(null, Prioridade.MEDIA, Status.ANDAMENTO, "ticket 5", "Teste ticket 5", tec2, cli1);
 		Ticket c6 = new Ticket(null, Prioridade.BAIXA, Status.ENCERRADO, "ticket 7", "Teste ticket 6", tec1, cli5);
 		
-		Aeroporto d1 = new Aeroporto(null, "Aeroporto Congonhas", "CGH");
-		Aeroporto d2 = new Aeroporto(null, "Aeroporto Internacional de Guarulhos", "GRU");
-		Aeroporto d3 = new Aeroporto(null, "Aeroporto Internacional de Miami", "MIA");
-		Aeroporto d4 = new Aeroporto(null, "Heathrow Airport", "LHR");
-		Aeroporto d5 = new Aeroporto(null, "Charles de Gaulle Airport", "CDG");
-		Aeroporto d6 = new Aeroporto(null, "Tokyo Haneda Airport", "HND");
+		Aeroporto d1 = new Aeroporto(null, "Aeroporto Congonhas", "CGH", "São Paulo");
+		Aeroporto d2 = new Aeroporto(null, "Aeroporto Internacional de Guarulhos", "GRU", "São Paulo");
+		Aeroporto d3 = new Aeroporto(null, "Aeroporto Internacional de Miami", "MIA", "Miami");
+		Aeroporto d4 = new Aeroporto(null, "Heathrow Airport", "LHR", "London");
+		Aeroporto d5 = new Aeroporto(null, "Charles de Gaulle Airport", "CDG", "Paris");
+		Aeroporto d6 = new Aeroporto(null, "Los Angeles International Airport", "LAX", "Los Angeles");
+		Aeroporto d7 = new Aeroporto(null, "Beijing Capital International Airport", "PEK", "Beijing");
+		Aeroporto d8 = new Aeroporto(null, "Dubai International Airport", "DXB", "Dubai");
+		Aeroporto d9 = new Aeroporto(null, "Singapore Changi Airport", "SIN", "Singapore");
+		Aeroporto d10 = new Aeroporto(null, "Sydney Kingsford Smith Airport", "SYD", "Sydney");
+
 
 
 		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5,tec6, cli1, cli2, cli3, cli4, cli5, cli6));
 		ticketRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
-		aeroportoRepository.saveAll(Arrays.asList(d1,d2,d3,d4,d5,d6));
+		aeroportoRepository.saveAll(Arrays.asList(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10));
 
 	}
 }

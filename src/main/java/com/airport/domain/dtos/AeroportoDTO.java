@@ -12,6 +12,18 @@ public class AeroportoDTO implements Serializable {
 	protected String nome;
 	
 	protected String airportIATA;
+	
+	protected String cidade;
+
+	
+	
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
 	public Integer getId() {
 		return id;
@@ -37,17 +49,19 @@ public class AeroportoDTO implements Serializable {
 		this.airportIATA = airportIATA;
 	}
 
-	public AeroportoDTO(Integer id, String nome, String airportIATA) {
+	public AeroportoDTO(Integer id, String nome, String airportIATA, String cidade) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.airportIATA = airportIATA;
+		this.cidade = cidade;
 	}
 
 	public AeroportoDTO(Aeroporto obj) {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
-		this.airportIATA = obj.getAirportIATA();	
+		this.airportIATA = obj.getAirportIATA();
+		this.cidade = obj.getCidade();
 		}
 	
 }

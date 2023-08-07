@@ -24,6 +24,18 @@ public class Aeroporto implements Serializable{
 	protected String nome;
 	
 	protected String airportIATA;
+	
+	protected String cidade;
+	
+	
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
 	public Integer getId() {
 		return id;
@@ -56,17 +68,19 @@ public class Aeroporto implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Aeroporto(Integer id, String nome, String airportIATA) {
+	public Aeroporto(Integer id, String nome, String airportIATA, String cidade) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.airportIATA = airportIATA;
+		this.cidade = cidade;
 	}
 
 	public Aeroporto(AeroportoDTO objDTO) {
 		this.id = objDTO.getId();
 		this.nome = objDTO.getNome();
 		this.airportIATA = objDTO.getAirportIATA();
+		this.cidade = objDTO.getCidade();
 	}
 
 	
