@@ -42,15 +42,21 @@ public class VooResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<VooDTO> create(@Valid @RequestBody VooDTO objDTO) {
-		Voo newObj = service.create(objDTO);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
-		return ResponseEntity.created(uri).build();
+	public ResponseEntity<?> create(@Valid @RequestBody VooDTO objDTO) {
+	    Voo newObj = service.create(objDTO);
+	    if (newObj.getAeroportoIda().equals(newObj.getAeroportoVolta())) {
+	        return ResponseEntity.badRequest().body("Error: Origem e chegada não podem ter o mesmo destino");
+	    }
+	    URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
+	    return ResponseEntity.created(uri).build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<VooDTO> update(@PathVariable Integer id, @Valid @RequestBody VooDTO objDTO) {
+	public ResponseEntity<?> update(@PathVariable Integer id, @Valid @RequestBody VooDTO objDTO) {
 		Voo obj = service.update(id, objDTO);
+		if(obj.getAeroportoIda().equals(obj.getAeroportoVolta())) {
+			return ResponseEntity.badRequest().body("Error: Origem e chegada não podem ter o mesmo destino");
+		}
 		return ResponseEntity.ok().body(new VooDTO(obj));
 	}
 
