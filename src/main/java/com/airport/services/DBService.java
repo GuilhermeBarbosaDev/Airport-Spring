@@ -30,12 +30,13 @@ public class DBService {
 		
 	
 	public void instanciaDB() {
-		Tecnico tec1 = new Tecnico(null, "Ruan Gemmer", "596.524.270-04", "guilhermebarbosajob@gmail.com", encoder.encode("123"));
+		Tecnico tec1 = new Tecnico(null, "Guilherme Barbosa", "596.524.270-04", "guilhermebarbosajob@gmail.com", encoder.encode("123"));
 		tec1.addPerfil(Perfil.ADMIN);
 		Tecnico tec2 = new Tecnico(null, "Richard Stallman", "903.347.070-56", "stallman@mail.com", encoder.encode("123"));
 		Tecnico tec3 = new Tecnico(null, "Claude Elwood Shannon", "271.068.470-54", "shannon@mail.com", encoder.encode("123"));
 		Tecnico tec4 = new Tecnico(null, "Tim Berners-Lee", "162.720.120-39", "lee@mail.com", encoder.encode("123"));
 		Tecnico tec5 = new Tecnico(null, "Linus Torvalds", "778.556.170-27", "linus@mail.com", encoder.encode("123"));
+		Tecnico tec6 = new Tecnico(null, "Teste Teste", "863.752.835-07", "teste@mail.com", encoder.encode("123"));
 
 		Cliente cli1 = new Cliente(null, "Albert Einstein", "111.661.890-74", "einstein@mail.com", encoder.encode("123"));
 		Cliente cli2 = new Cliente(null, "Marie Curie", "322.429.140-06", "curie@mail.com", encoder.encode("123"));
@@ -52,7 +53,7 @@ public class DBService {
 		Ticket c5 = new Ticket(null, Prioridade.MEDIA, Status.ANDAMENTO, "ticket 5", "Teste ticket 5", tec2, cli1);
 		Ticket c6 = new Ticket(null, Prioridade.BAIXA, Status.ENCERRADO, "ticket 7", "Teste ticket 6", tec1, cli5);
 
-		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5, cli1, cli2, cli3, cli4, cli5, cli6));
+		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5,tec6, cli1, cli2, cli3, cli4, cli5, cli6));
 		ticketRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
 
 	}
