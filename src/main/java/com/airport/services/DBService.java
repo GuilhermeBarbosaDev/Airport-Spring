@@ -6,12 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.airport.domain.Aeroporto;
 import com.airport.domain.Cliente;
 import com.airport.domain.Tecnico;
 import com.airport.domain.Ticket;
 import com.airport.domain.enums.Perfil;
 import com.airport.domain.enums.Prioridade;
 import com.airport.domain.enums.Status;
+import com.airport.repository.AeroportoRepository;
 import com.airport.repository.PessoaRepository;
 import com.airport.repository.TicketRepository;
 
@@ -23,6 +25,8 @@ public class DBService {
 		private PessoaRepository pessoaRepository;
 		@Autowired
 		private TicketRepository ticketRepository;
+		@Autowired
+		private AeroportoRepository aeroportoRepository;
 		
 		//Para criptografar a senha
 		@Autowired
@@ -52,9 +56,18 @@ public class DBService {
 		Ticket c4 = new Ticket(null, Prioridade.ALTA, Status.ABERTO, "ticket 4", "Teste ticket 4", tec3, cli3);
 		Ticket c5 = new Ticket(null, Prioridade.MEDIA, Status.ANDAMENTO, "ticket 5", "Teste ticket 5", tec2, cli1);
 		Ticket c6 = new Ticket(null, Prioridade.BAIXA, Status.ENCERRADO, "ticket 7", "Teste ticket 6", tec1, cli5);
+		
+		Aeroporto d1 = new Aeroporto(null, "Aeroporto Congonhas", "CGH");
+		Aeroporto d2 = new Aeroporto(null, "Aeroporto Internacional de Guarulhos", "GRU");
+		Aeroporto d3 = new Aeroporto(null, "Aeroporto Internacional de Miami", "MIA");
+		Aeroporto d4 = new Aeroporto(null, "Heathrow Airport", "LHR");
+		Aeroporto d5 = new Aeroporto(null, "Charles de Gaulle Airport", "CDG");
+		Aeroporto d6 = new Aeroporto(null, "Tokyo Haneda Airport", "HND");
+
 
 		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5,tec6, cli1, cli2, cli3, cli4, cli5, cli6));
 		ticketRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
+		aeroportoRepository.saveAll(Arrays.asList(d1,d2,d3,d4,d5,d6));
 
 	}
 }
