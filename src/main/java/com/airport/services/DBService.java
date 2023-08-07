@@ -10,12 +10,14 @@ import com.airport.domain.Aeroporto;
 import com.airport.domain.Cliente;
 import com.airport.domain.Tecnico;
 import com.airport.domain.Ticket;
+import com.airport.domain.Voo;
 import com.airport.domain.enums.Perfil;
 import com.airport.domain.enums.Prioridade;
 import com.airport.domain.enums.Status;
 import com.airport.repository.AeroportoRepository;
 import com.airport.repository.PessoaRepository;
 import com.airport.repository.TicketRepository;
+import com.airport.repository.VooRepository;
 
 @Service
 public class DBService {
@@ -27,6 +29,8 @@ public class DBService {
 		private TicketRepository ticketRepository;
 		@Autowired
 		private AeroportoRepository aeroportoRepository;
+		@Autowired
+		private VooRepository vooRepository;
 		
 		//Para criptografar a senha
 		@Autowired
@@ -67,12 +71,22 @@ public class DBService {
 		Aeroporto d8 = new Aeroporto(null, "Dubai International Airport", "DXB", "Dubai");
 		Aeroporto d9 = new Aeroporto(null, "Singapore Changi Airport", "SIN", "Singapore");
 		Aeroporto d10 = new Aeroporto(null, "Sydney Kingsford Smith Airport", "SYD", "Sydney");
+		
+		Voo v1 = new Voo(null, d1, d2, Status.ABERTO);
+		Voo v2 = new Voo(null, d3, d4, Status.ABERTO);
+		Voo v3 = new Voo(null, d5, d6, Status.ABERTO);
+		Voo v4 = new Voo(null, d7, d8, Status.ABERTO);
+		Voo v5 = new Voo(null, d9, d10, Status.ABERTO);
+
+
+
 
 
 
 		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5,tec6, cli1, cli2, cli3, cli4, cli5, cli6));
 		ticketRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
 		aeroportoRepository.saveAll(Arrays.asList(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10));
+		vooRepository.saveAll(Arrays.asList(v1,v2,v3,v4,v5));
 
 	}
 }
