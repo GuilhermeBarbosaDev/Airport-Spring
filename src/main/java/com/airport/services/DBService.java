@@ -78,11 +78,6 @@ public class DBService {
 		Voo v4 = new Voo(null, d7, d8, Status.ABERTO);
 		Voo v5 = new Voo(null, d9, d10, Status.ABERTO);
 
-
-
-
-
-
 		pessoaRepository.saveAll(Arrays.asList(tec1, tec2, tec3, tec4, tec5,tec6, cli1, cli2, cli3, cli4, cli5, cli6));
 		ticketRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6));
 		aeroportoRepository.saveAll(Arrays.asList(d1,d2,d3,d4,d5,d6,d7,d8,d9,d10));
