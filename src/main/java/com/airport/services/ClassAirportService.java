@@ -2,16 +2,23 @@ package com.airport.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.airport.domain.Aeroporto;
 import com.airport.domain.ClassAirport;
+import com.airport.domain.Tecnico;
 import com.airport.domain.Voo;
 import com.airport.domain.dtos.ClassAirportDTO;
+import com.airport.domain.dtos.TecnicoDTO;
 import com.airport.domain.dtos.VooDTO;
 import com.airport.domain.enums.Status;
 import com.airport.repository.ClassAirportRepository;
+import com.airport.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClassAirportService {
@@ -22,6 +29,11 @@ public class ClassAirportService {
 	
 	public List<ClassAirport> findAll() {
 		return classAirRepository.findAll();
+	}
+	
+	public ClassAirport findById(Integer id) {
+		Optional<ClassAirport> obj = classAirRepository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não Encontrado! ID: " + id));
 	}
 	
 	
@@ -49,6 +61,13 @@ public class ClassAirportService {
 		}else {
 			throw new IllegalArgumentException("Erro");
 		}
+	}
+	
+	public ClassAirport update(Integer id, @Valid ClassAirportDTO objDTO) {
+		objDTO.setId(id);
+		ClassAirport oldObj = findById(id);
+		oldObj = new ClassAirport(objDTO);
+		return classAirRepository.save(oldObj);
 	}
 
 }
