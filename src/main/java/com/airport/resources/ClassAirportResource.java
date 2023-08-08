@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.airport.domain.ClassAirport;
-import com.airport.domain.Cliente;
 import com.airport.domain.dtos.ClassAirportDTO;
-import com.airport.domain.dtos.ClienteDTO;
 import com.airport.services.ClassAirportService;
 
 @RestController
@@ -28,7 +26,10 @@ public class ClassAirportResource {
 	@GetMapping
 	public ResponseEntity<List<ClassAirportDTO>> findAll() {
 		List<ClassAirport> list = classAirportService.findAll();
-		List<ClassAirportDTO> listDTO = list.stream().map(obj -> new ClassAirportDTO(obj)).collect(Collectors.toList());
+		List<ClassAirportDTO> listDTO = list.stream()
+				.filter(obj -> obj.getNome() != null)
+				.map(obj -> new ClassAirportDTO(obj)).collect(Collectors.toList());
+		
 		return ResponseEntity.ok().body(listDTO);
 	}
 
