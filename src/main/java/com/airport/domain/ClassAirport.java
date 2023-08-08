@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.airport.domain.dtos.ClassAirportDTO;
 import com.airport.domain.enums.Status;
@@ -26,6 +27,8 @@ public class ClassAirport implements Serializable{
 	
 	private float price;
 	
+	private Cliente cliente;
+	
 	@ManyToOne
 	@JoinColumn(name = "voo_id")
 	private Voo voo;
@@ -33,6 +36,16 @@ public class ClassAirport implements Serializable{
 	private Boolean dispatch;
 	
 	private Status status;
+
+	
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	public Status getStatus() {
 		return status;
@@ -90,7 +103,7 @@ public class ClassAirport implements Serializable{
 		this.dispatch = dispatch;
 	}
 
-	public ClassAirport(String nome, String accents, float price, Voo voo, Boolean dispatch, Status status) {
+	public ClassAirport(String nome, String accents, float price, Voo voo, Boolean dispatch, Status status, Cliente cliente) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -99,6 +112,7 @@ public class ClassAirport implements Serializable{
 		this.voo = voo;
 		this.dispatch = dispatch;
 		this.status = status;
+		this.cliente = cliente;
 	}
 	
 	public ClassAirport(ClassAirportDTO objDTO) {
@@ -110,6 +124,7 @@ public class ClassAirport implements Serializable{
 		this.voo = objDTO.getVoo();
 		this.dispatch = objDTO.getDispatch();
 		this.status = objDTO.getStatus();
+		this.cliente = objDTO.getCliente();
 	}
 
 	public ClassAirport() {

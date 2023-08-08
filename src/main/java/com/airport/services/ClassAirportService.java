@@ -36,6 +36,14 @@ public class ClassAirportService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não Encontrado! ID: " + id));
 	}
 	
+
+	public ClassAirport comprarTicket(Integer id, @Valid ClassAirportDTO objDTO) {
+		objDTO.setId(id);
+		ClassAirport oldObj = findById(id);
+		oldObj = new ClassAirport(objDTO);
+		return classAirRepository.save(oldObj);
+	}
+	
 	
 	public void createClassAirport(ClassAirportDTO objDTO, Voo voo){
 		List<ClassAirport> classAirports = new ArrayList<>();
@@ -47,6 +55,7 @@ public class ClassAirportService {
 			objDTO.setNome("Economica");
 			objDTO.setPrice(500);
 			objDTO.setStatus(Status.ABERTO);
+			objDTO.setCliente(null);
 			classAirports.add(classAirport);
 		}
 		

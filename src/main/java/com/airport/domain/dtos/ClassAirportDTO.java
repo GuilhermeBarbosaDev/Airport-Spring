@@ -4,6 +4,7 @@ package com.airport.domain.dtos;
 import java.io.Serializable;
 
 import com.airport.domain.ClassAirport;
+import com.airport.domain.Cliente;
 import com.airport.domain.Voo;
 import com.airport.domain.enums.Status;
 
@@ -23,6 +24,18 @@ private Integer id;
 	private Boolean dispatch;
 	
 	private Status status;
+	
+	private Cliente cliente;
+
+	
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
 	public Status getStatus() {
 		return status;
@@ -80,7 +93,7 @@ private Integer id;
 		this.dispatch = dispatch;
 	}
 
-	public ClassAirportDTO(Integer id, String nome, String accents, float price, Voo voo, Boolean dispatch, Status status) {
+	public ClassAirportDTO(Integer id, String nome, String accents, float price, Voo voo, Boolean dispatch, Status status, Cliente cliente) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -89,6 +102,7 @@ private Integer id;
 		this.voo = voo;
 		this.dispatch = dispatch;
 		this.status = status;
+		this.cliente = cliente;
 	}
 
 	public ClassAirportDTO() {
@@ -105,5 +119,6 @@ private Integer id;
 		this.voo = obj.getVoo();
 		this.dispatch = obj.getDispatch();
 		this.status = obj.getStatus();
+		this.cliente = obj.getCliente();
 	}
 }
