@@ -10,6 +10,7 @@ import com.airport.domain.ClassAirport;
 import com.airport.domain.Voo;
 import com.airport.domain.dtos.ClassAirportDTO;
 import com.airport.domain.dtos.VooDTO;
+import com.airport.domain.enums.Status;
 import com.airport.repository.ClassAirportRepository;
 
 @Service
@@ -33,6 +34,7 @@ public class ClassAirportService {
 			objDTO.setVoo(voo);
 			objDTO.setNome("Economica");
 			objDTO.setPrice(500);
+			objDTO.setStatus(Status.ABERTO);
 			classAirports.add(classAirport);
 		}
 		

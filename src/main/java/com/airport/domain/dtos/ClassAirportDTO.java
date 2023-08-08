@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import com.airport.domain.ClassAirport;
 import com.airport.domain.Voo;
+import com.airport.domain.enums.Status;
 
 public class ClassAirportDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +21,16 @@ private Integer id;
 	private Voo voo;
 	
 	private Boolean dispatch;
+	
+	private Status status;
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	public Integer getId() {
 		return id;
@@ -69,7 +80,7 @@ private Integer id;
 		this.dispatch = dispatch;
 	}
 
-	public ClassAirportDTO(Integer id, String nome, String accents, float price, Voo voo, Boolean dispatch) {
+	public ClassAirportDTO(Integer id, String nome, String accents, float price, Voo voo, Boolean dispatch, Status status) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -77,6 +88,7 @@ private Integer id;
 		this.price = price;
 		this.voo = voo;
 		this.dispatch = dispatch;
+		this.status = status;
 	}
 
 	public ClassAirportDTO() {
@@ -92,5 +104,6 @@ private Integer id;
 		this.price = obj.getPrice();
 		this.voo = obj.getVoo();
 		this.dispatch = obj.getDispatch();
+		this.status = obj.getStatus();
 	}
 }

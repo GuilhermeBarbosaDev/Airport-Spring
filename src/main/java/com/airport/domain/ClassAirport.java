@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.airport.domain.dtos.ClassAirportDTO;
+import com.airport.domain.enums.Status;
 
 @Entity
 public class ClassAirport implements Serializable{
@@ -30,6 +31,16 @@ public class ClassAirport implements Serializable{
 	private Voo voo;
 	
 	private Boolean dispatch;
+	
+	private Status status;
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	public Integer getId() {
 		return id;
@@ -79,7 +90,7 @@ public class ClassAirport implements Serializable{
 		this.dispatch = dispatch;
 	}
 
-	public ClassAirport(String nome, String accents, float price, Voo voo, Boolean dispatch) {
+	public ClassAirport(String nome, String accents, float price, Voo voo, Boolean dispatch, Status status) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -87,6 +98,7 @@ public class ClassAirport implements Serializable{
 		this.price = price;
 		this.voo = voo;
 		this.dispatch = dispatch;
+		this.status = status;
 	}
 	
 	public ClassAirport(ClassAirportDTO objDTO) {
@@ -97,6 +109,7 @@ public class ClassAirport implements Serializable{
 		this.price = objDTO.getPrice();
 		this.voo = objDTO.getVoo();
 		this.dispatch = objDTO.getDispatch();
+		this.status = objDTO.getStatus();
 	}
 
 	public ClassAirport() {
